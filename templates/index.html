@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDOom</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+
+<body style="background-color: powderblue;">
+    <div class="container" style="padding : 0px 10px 10px 10px;">
+        <div style="margin-top: 50px;" class="ui container">
+            <h1 class="ui center aligned header">You are here Again!</h1>
+
+            <form class="ui form" action="/add" method="post" style="background-color: wheat;" enctype = "multipart/form-data">
+                <div class="field" >
+                    <label>File Title</label>
+                    <input type="text" name="title" required placeholder="Enter description..."><br>
+                </div>
+                <div class="field">
+                    <label>Pick File</label>
+                    <input class="form-control-file" type="file" name="inputFile">
+                </div>
+                <button class="ui secondary button" type="submit">Add</button>
+            </form>
+
+
+
+            <hr>
+
+            {% for todo in todo_list %}
+            <div class="ui segment">
+                <p class="ui big header">{{todo.id }} | {{ todo.title }}</p>
+<!--                <p class="ui big header"> {{ todo.data }}</p>-->
+
+
+                {% if todo.complete == False %}
+                <span class="ui red label">Not Complete</span>
+                {% else %}
+                <span class="ui green label">Completed</span>
+                {% endif %}
+
+                <a class="ui primary button" href="/update/{{ todo.id }}">Update</a>
+                <a class="ui button" href="/delete/{{ todo.id }}">Delete</a>
+                <a class="ui button" href="/access/{{ todo.id }}">Access</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if path %}
+<!--<img src="{{ path }}" alt="image" width="500" height="500">-->
+    <a href="{{ path }}" download>Download</a>
+    </br>
+<!--    <a href="{{ path }}" download>Download</a>-->
+{% endif %}
+
+{% if path.split('.')[-1].lower() in ['jpg','png','jpeg'] %}
+    <img src="{{ path }}" alt="image" width="500" height="500">
+{% else %}
+    <h2>Cannot preview the content</h2>
+{% endif %}
+</body>
+</html>
+

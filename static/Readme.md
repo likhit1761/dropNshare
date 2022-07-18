@@ -1,0 +1,1 @@
+create a tiles folder inside output folder
